@@ -2,8 +2,8 @@ import os
 import subprocess
 
 def _dot_var(v, verbose=False):
-    dot_var='{} [label={}, color=orange, style=filled]\n'
-    name='""' if v.name is None else v.name
+    dot_var='{} [label="{}", color=orange, style=filled]\n'
+    name='' if v.name is None else v.name
     if verbose and v.data is not None:
         if v.name is not None:
             name+=': '
@@ -11,7 +11,7 @@ def _dot_var(v, verbose=False):
     return dot_var.format(id(v), name)
 
 def _dot_func(f):
-    dot_func='{} [label={}, color=lightblue, style=filled, shape=box]\n'
+    dot_func='{} [label="{}", color=lightblue, style=filled, shape=box]\n'
     txt=dot_func.format(id(f), f.__class__.__name__)
     dot_edge='{} -> {}\n'
     for x in f.inputs:
